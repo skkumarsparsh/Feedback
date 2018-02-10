@@ -10,6 +10,7 @@ import { Http,Headers,RequestOptions,RequestMethod } from '@angular/http';
 export class FormComponent implements OnInit {
 
   data;
+  step = -1;
 
   model = new Form(1, '', '', 'http://');
 
@@ -29,6 +30,18 @@ export class FormComponent implements OnInit {
       this.data = res.json() || {};
       console.log(this.data);
     });
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 
 }
