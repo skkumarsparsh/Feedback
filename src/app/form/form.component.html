@@ -1,28 +1,3 @@
-<!-- <div class="container">
-  <h1>Form</h1>
-  <form>
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" required [(ngModel)]="model.title" name="title">
-    </div>
-    <br>
-    <div class="form-group">
-      <label for="author">Author</label>
-      <input type="text" class="form-control" id="author" required [(ngModel)]="model.author" name="author">
-    </div>
-    <br>
-    <div class="form-group">
-      <label for="url">URL</label>
-      <input type="text" class="form-control" id="url" [(ngModel)]="model.url" name="url">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-default" (click)="getData()" >Submit</button>
-   </form>
-   <div>
-    <h2>Model:</h2>
-    {{ currentField }}
-  </div>
- </div> -->
 <div style="padding:10px">
   <mat-card class="example-card">
   
@@ -45,12 +20,17 @@
             </mat-expansion-panel-header>
 
             <mat-form-field>
-              <input matInput placeholder="First name">
+              <!-- <input matInput placeholder="First name"> -->
+              <mat-select placeholder="Use of Board">
+                <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                  {{ f.viewValue }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
 
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput type="number" min="1" placeholder="Age">
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-action-row>
               <button mat-button color="primary" (click)="nextStep()">Next</button>
@@ -68,12 +48,17 @@
             </mat-expansion-panel-header>
 
             <mat-form-field>
-              <input matInput placeholder="First name">
+              <!-- <input matInput placeholder="First name"> -->
+              <mat-select placeholder="Use of Board">
+                <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                  {{ f.viewValue }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
 
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput type="number" min="1" placeholder="Age">
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -92,12 +77,17 @@
             </mat-expansion-panel-header>
 
             <mat-form-field>
-              <input matInput placeholder="First name">
+              <!-- <input matInput placeholder="First name"> -->
+              <mat-select placeholder="Use of Board">
+                <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                  {{ f.viewValue }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
 
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput type="number" min="1" placeholder="Age">
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -116,12 +106,17 @@
             </mat-expansion-panel-header>
 
             <mat-form-field>
-              <input matInput placeholder="First name">
+              <!-- <input matInput placeholder="First name"> -->
+              <mat-select placeholder="Use of Board">
+                <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                  {{ f.viewValue }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
 
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput type="number" min="1" placeholder="Age">
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -140,12 +135,17 @@
             </mat-expansion-panel-header>
 
             <mat-form-field>
-              <input matInput placeholder="First name">
+              <!-- <input matInput placeholder="First name"> -->
+              <mat-select placeholder="Use of Board">
+                <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                  {{ f.viewValue }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
 
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput type="number" min="1" placeholder="Age">
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -164,12 +164,17 @@
             </mat-expansion-panel-header>
 
             <mat-form-field>
-              <input matInput placeholder="First name">
+              <!-- <input matInput placeholder="First name"> -->
+              <mat-select placeholder="Use of Board">
+                <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                  {{ f.viewValue }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
 
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input matInput type="number" min="1" placeholder="Age">
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-action-row>
               <button mat-button color="warn" (click)="prevStep()">Previous</button>

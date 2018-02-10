@@ -12,6 +12,15 @@ export class FormComponent implements OnInit {
   data;
   step = -1;
 
+  Feedbacks = [
+    {value: '0', viewValue: 'Excellent'},
+    {value: '1', viewValue: 'Very Good'},
+    {value: '2', viewValue: 'Good'},
+    {value: '3', viewValue: 'Satisfactory'},
+    {value: '4', viewValue: 'Bad'},
+    {value: '1', viewValue: 'Very Bad'},
+  ]
+
   model = new Form(1, '', '', 'http://');
 
   constructor(private http:Http) { }
