@@ -56,6 +56,10 @@ export class FormComponent implements OnInit {
     // });
   }
 
+  submit() {
+    
+  }
+
   setStep(index: number,panelcontrol,panel) {
     this.step = index;
     if(this.initial!=0) {
