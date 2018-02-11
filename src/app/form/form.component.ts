@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Form } from '../form.model';
 import { Http,Headers,RequestOptions,RequestMethod } from '@angular/http';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-form',
@@ -15,6 +17,7 @@ export class FormComponent implements OnInit {
   initial;
   previousPanelControl;
   previousPanel;
+  validPanels = new Array(6);
 
   Feedbacks = [
     {value: '0', viewValue: 'Excellent'},
@@ -32,7 +35,7 @@ export class FormComponent implements OnInit {
   teacherControl5 = new Array(12);
   teacherControl6 = new Array(12);
 
-  constructor(private http:Http) {
+  constructor(private http:Http, public dialog: MatDialog) {
     for(var i=0;i<12;i++) {
       this.teacherControl1[i] = new FormControl('', [Validators.required]);
       this.teacherControl2[i] = new FormControl('', [Validators.required]);
@@ -40,6 +43,9 @@ export class FormComponent implements OnInit {
       this.teacherControl4[i] = new FormControl('', [Validators.required]);
       this.teacherControl5[i] = new FormControl('', [Validators.required]);
       this.teacherControl6[i] = new FormControl('', [Validators.required]);
+    }
+    for(var i=0;i<6;i++) {
+      this.validPanels[i] = 0;
     }
     this.initial=0;
   }
@@ -57,7 +63,29 @@ export class FormComponent implements OnInit {
   }
 
   submit() {
-    
+    var j;
+    this.changeColor(this.teacherControl1,'panel1');
+    this.changeColor(this.teacherControl2,'panel2');
+    this.changeColor(this.teacherControl3,'panel3');
+    this.changeColor(this.teacherControl4,'panel4');
+    this.changeColor(this.teacherControl5,'panel5');
+    this.changeColor(this.teacherControl6,'panel6');
+    for(var i=0;i<6;i++) {
+      if(this.validPanels[i] == 0) {
+        j=1;
+        break;
+      }
+    }
+    if(j==1) {
+      this.openDialog();
+    }
+  }
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      width: '360px',
+      data: { name: 'test', animal: 'test' }
+    });
   }
 
   setStep(index: number,panelcontrol,panel) {
@@ -93,8 +121,12 @@ export class FormComponent implements OnInit {
     }
     if(j==1) {
       document.getElementById(panel).setAttribute("style","background-color:rgba(255,0,0,0.2);");
+      var panelNumber = parseInt(panel[panel.length - 1]) - 1;
+      this.validPanels[panelNumber] = 0;
     } else {
       document.getElementById(panel).setAttribute("style","background-color:rgba(0,255,0,0.2);");
+      var panelNumber = parseInt(panel[panel.length - 1]) - 1;
+      this.validPanels[panelNumber] = 1;
     }
   }
 
