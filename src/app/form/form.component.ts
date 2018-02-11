@@ -17,7 +17,6 @@ export class FormComponent implements OnInit {
   initial;
   previousPanelControl;
   previousPanel;
-  validPanels = new Array(6);
 
   Feedbacks = [
     {value: '0', viewValue: 'Excellent'},
@@ -34,6 +33,7 @@ export class FormComponent implements OnInit {
   teacherControl4 = new Array(12);
   teacherControl5 = new Array(12);
   teacherControl6 = new Array(12);
+  validPanels = new Array(6);
 
   constructor(private http:Http, public dialog: MatDialog) {
     for(var i=0;i<12;i++) {
@@ -78,6 +78,8 @@ export class FormComponent implements OnInit {
     }
     if(j==1) {
       this.openDialog();
+    } else {
+      console.log("Complete Feedback Form");
     }
   }
 

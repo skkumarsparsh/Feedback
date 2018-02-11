@@ -1,5 +1,6 @@
 .mat-action-row {
     padding:8px 8px 8px 24px;
+    justify-content: center;
 }
 
 .mat-card {
