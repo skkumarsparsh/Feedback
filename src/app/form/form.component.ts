@@ -17,6 +17,8 @@ export class FormComponent implements OnInit {
   initial;
   previousPanelControl;
   previousPanel;
+  teachers = new Array(6);
+  selected;
 
   Feedbacks = [
     {value: '0', viewValue: 'Excellent'},
@@ -33,6 +35,12 @@ export class FormComponent implements OnInit {
   teacherControl4 = new Array(12);
   teacherControl5 = new Array(12);
   teacherControl6 = new Array(12);
+  selected1 = new Array(12);
+  selected2 = new Array(12);
+  selected3 = new Array(12);
+  selected4 = new Array(12);
+  selected5 = new Array(12);
+  selected6 = new Array(12);
   validPanels = new Array(6);
 
   constructor(private http:Http, public dialog: MatDialog) {
@@ -43,6 +51,12 @@ export class FormComponent implements OnInit {
       this.teacherControl4[i] = new FormControl('', [Validators.required]);
       this.teacherControl5[i] = new FormControl('', [Validators.required]);
       this.teacherControl6[i] = new FormControl('', [Validators.required]);
+      this.selected1[i] = 10;
+      this.selected2[i] = 10;
+      this.selected3[i] = 10;
+      this.selected4[i] = 10;
+      this.selected5[i] = 10;
+      this.selected6[i] = 10;
     }
     for(var i=0;i<6;i++) {
       this.validPanels[i] = 0;
@@ -51,15 +65,14 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getData();
   }
 
   getData() {
-    // let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
-    // let options = new RequestOptions({ headers: headers });
-    // this.http.post('http://127.0.0.1:8080', this.model, options).subscribe(res => {
-    //   this.data = res.json() || {};
-    //   console.log(this.data);
-    // });
+    this.http.get('http://127.0.0.1:8080/test').subscribe(res => {
+      this.data = res.json() || {};
+      this.teachers = this.data["Semester 6"]["Class D"];
+    })
   }
 
   submit() {
@@ -77,16 +90,27 @@ export class FormComponent implements OnInit {
       }
     }
     if(j==1) {
-      this.openDialog();
+      this.openDialog(false);
     } else {
-      console.log("Complete Feedback Form");
+      /**TODO - Send the data here!! */
+
+
+      // let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+      // let options = new RequestOptions({ headers: headers });
+      // this.http.post('http://127.0.0.1:8080', this.model, options).subscribe(res => {
+      //   this.data = res.json() || {};
+      //   console.log(this.data);
+      // });
+
+
+      this.openDialog(true);
     }
   }
 
-  openDialog(): void {
+  openDialog(d): void {
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '360px',
-      data: { name: 'test', animal: 'test' }
+      data: { value: d }
     });
   }
 
