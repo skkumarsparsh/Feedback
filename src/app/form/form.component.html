@@ -9,7 +9,7 @@
       <div style="padding:10px">
 
         <mat-accordion>
-          <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" style="background-color:white">
+          <mat-expansion-panel id="panel1" [expanded]="step === 0" (opened)="setStep(0,teacherControl1,'panel1')">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Teacher 1
@@ -184,11 +184,11 @@
             </div>
 
             <mat-action-row>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="primary" (click)="nextStep(teacherControl1,'panel1')">Next</button>
             </mat-action-row>
           </mat-expansion-panel>
 
-          <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+          <mat-expansion-panel id="panel2" [expanded]="step === 1" (opened)="setStep(1,teacherControl2,'panel2')">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Teacher 2
@@ -363,12 +363,12 @@
             </div>
 
             <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="warn" (click)="prevStep(teacherControl2,'panel2')">Previous</button>
+              <button mat-button color="primary" (click)="nextStep(teacherControl2,'panel2')">Next</button>
             </mat-action-row>
           </mat-expansion-panel>
 
-          <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+          <mat-expansion-panel id="panel3" [expanded]="step === 2" (opened)="setStep(2,teacherControl3,'panel3')">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Teacher 3
@@ -543,12 +543,12 @@
             </div>
 
             <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="warn" (click)="prevStep(teacherControl3,'panel3')">Previous</button>
+              <button mat-button color="primary" (click)="nextStep(teacherControl3,'panel3')">Next</button>
             </mat-action-row>
           </mat-expansion-panel>
 
-          <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+          <mat-expansion-panel id="panel4" [expanded]="step === 3" (opened)="setStep(3,teacherControl4,'panel4')">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Teacher 4
@@ -723,12 +723,12 @@
             </div>
 
             <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="warn" (click)="prevStep(teacherControl4,'panel4')">Previous</button>
+              <button mat-button color="primary" (click)="nextStep(teacherControl4,'panel4')">Next</button>
             </mat-action-row>
           </mat-expansion-panel>
 
-          <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)">
+          <mat-expansion-panel id="panel5" [expanded]="step === 4" (opened)="setStep(4,teacherControl5,'panel5')">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Teacher 5
@@ -903,12 +903,12 @@
             </div>
 
             <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="warn" (click)="prevStep(teacherControl5,'panel5')">Previous</button>
+              <button mat-button color="primary" (click)="nextStep(teacherControl5,'panel5')">Next</button>
             </mat-action-row>
           </mat-expansion-panel>
 
-          <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)">
+          <mat-expansion-panel id="panel6" [expanded]="step === 5" (opened)="setStep(5,teacherControl6,'panel6')">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Teacher 6
@@ -1083,8 +1083,8 @@
             </div>
 
             <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">End</button>
+              <button mat-button color="warn" (click)="prevStep(teacherControl6,'panel6')">Previous</button>
+              <button mat-button color="primary" (click)="nextStep(teacherControl6,'panel6')">End</button>
             </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>
