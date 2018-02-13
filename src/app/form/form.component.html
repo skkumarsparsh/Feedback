@@ -1,1104 +1,1120 @@
-<div style="padding:10px">
-  <mat-card class="example-card">
-  
-    <mat-card-header>
-      <mat-card-title><span style="font-weight:700;font-size:20px">Subject Teachers of 6D</span></mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row" style="padding: 0 40px 0 40px;">
+      <span class="mdl-layout-title">Teacher Feedback</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <button mat-button (click)="logout()">Logout</button>
+        <!-- <a class="mdl-navigation__link" href (click)="this.authService.logout();">Logout</a> -->
+      </nav>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+    <div class="page-content">
       <div style="padding:10px">
-
-        <mat-accordion>
-          <mat-expansion-panel id="panel1" [expanded]="step === 0" (opened)="setStep(0,teacherControl1,'panel1')">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <span *ngIf="data">{{teachers[0]}}</span>
-              </mat-panel-title>
-              <mat-panel-description>
-                Click to give Feedback
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-
+        <mat-card class="example-card">
+        
+          <mat-card-header>
+            <mat-card-title><span style="font-weight:700;font-size:20px">Subject Teachers of 6D</span></mat-card-title>
+          </mat-card-header>
+        
+          <mat-card-content>
+            <div style="padding:10px">
+            
+              <mat-accordion>
+                <mat-expansion-panel id="panel1" [expanded]="step === 0" (opened)="setStep(0,teacherControl1,'panel1')">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <span *ngIf="data">{{teachers[0]}}</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Click to give Feedback
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                
+                  <br>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl1[0]" [(value)]="selected1[0]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Utilization of Board" [formControl]="teacherControl1[1]" [(value)]="selected1[1]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Voice Modulation" [formControl]="teacherControl1[2]" [(value)]="selected1[2]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Control over the Class" [formControl]="teacherControl1[3]" [(value)]="selected1[3]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl1[4]" [(value)]="selected1[4]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl1[5]" [(value)]="selected1[5]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl1[6]" [(value)]="selected1[6]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Punctuality" [formControl]="teacherControl1[7]" [(value)]="selected1[7]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl1[8]" [(value)]="selected1[8]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl1[9]" [(value)]="selected1[9]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Interaction with Students" [formControl]="teacherControl1[10]" [(value)]="selected1[10]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl1[11]" [(value)]="selected1[11]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <mat-action-row>
+                    <button mat-button color="primary" (click)="nextStep(teacherControl1,'panel1')">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel id="panel2" [expanded]="step === 1" (opened)="setStep(1,teacherControl2,'panel2')">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <span *ngIf="data">{{teachers[1]}}</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Click to give Feedback
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                
+                  <br>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl2[0]" [(value)]="selected2[0]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Utilization of Board" [formControl]="teacherControl2[1]" [(value)]="selected2[1]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Voice Modulation" [formControl]="teacherControl2[2]" [(value)]="selected2[2]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Control over the Class" [formControl]="teacherControl2[3]" [(value)]="selected2[3]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl2[4]" [(value)]="selected2[4]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl2[5]" [(value)]="selected2[5]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl2[6]" [(value)]="selected2[6]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Punctuality" [formControl]="teacherControl2[7]" [(value)]="selected2[7]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl2[8]" [(value)]="selected2[8]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl2[9]" [(value)]="selected2[9]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Interaction with Students" [formControl]="teacherControl2[10]" [(value)]="selected2[10]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl2[11]" [(value)]="selected2[11]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep(teacherControl2,'panel2')">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep(teacherControl2,'panel2')">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel id="panel3" [expanded]="step === 2" (opened)="setStep(2,teacherControl3,'panel3')">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <span *ngIf="data">{{teachers[2]}}</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Click to give Feedback
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                
+                  <br>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl3[0]" [(value)]="selected3[0]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Utilization of Board" [formControl]="teacherControl3[1]" [(value)]="selected3[1]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Voice Modulation" [formControl]="teacherControl3[2]" [(value)]="selected3[2]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Control over the Class" [formControl]="teacherControl3[3]" [(value)]="selected3[3]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl3[4]" [(value)]="selected3[4]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl3[5]" [(value)]="selected3[5]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl3[6]" [(value)]="selected3[6]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Punctuality" [formControl]="teacherControl3[7]" [(value)]="selected3[7]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl3[8]" [(value)]="selected3[8]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl3[9]" [(value)]="selected3[9]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Interaction with Students" [formControl]="teacherControl3[10]" [(value)]="selected3[10]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl3[11]" [(value)]="selected3[11]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep(teacherControl3,'panel3')">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep(teacherControl3,'panel3')">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel id="panel4" [expanded]="step === 3" (opened)="setStep(3,teacherControl4,'panel4')">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <span *ngIf="data">{{teachers[3]}}</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Click to give Feedback
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                
+                  <br>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl4[0]" [(value)]="selected4[0]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Utilization of Board" [formControl]="teacherControl4[1]" [(value)]="selected4[1]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Voice Modulation" [formControl]="teacherControl4[2]" [(value)]="selected4[2]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Control over the Class" [formControl]="teacherControl4[3]" [(value)]="selected4[3]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl4[4]" [(value)]="selected4[4]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl4[5]" [(value)]="selected4[5]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl4[6]" [(value)]="selected4[6]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Punctuality" [formControl]="teacherControl4[7]" [(value)]="selected4[7]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl4[8]" [(value)]="selected4[8]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl4[9]" [(value)]="selected4[9]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Interaction with Students" [formControl]="teacherControl4[10]" [(value)]="selected4[10]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl4[11]" [(value)]="selected4[11]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep(teacherControl4,'panel4')">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep(teacherControl4,'panel4')">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel id="panel5" [expanded]="step === 4" (opened)="setStep(4,teacherControl5,'panel5')">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <span *ngIf="data">{{teachers[4]}}</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Click to give Feedback
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                
+                  <br>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl5[0]" [(value)]="selected5[0]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Utilization of Board" [formControl]="teacherControl5[1]" [(value)]="selected5[1]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Voice Modulation" [formControl]="teacherControl5[2]" [(value)]="selected5[2]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Control over the Class" [formControl]="teacherControl5[3]" [(value)]="selected5[3]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl5[4]" [(value)]="selected5[4]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl5[5]" [(value)]="selected5[5]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl5[6]" [(value)]="selected5[6]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Punctuality" [formControl]="teacherControl5[7]" [(value)]="selected5[7]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl5[8]" [(value)]="selected5[8]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl5[9]" [(value)]="selected5[9]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Interaction with Students" [formControl]="teacherControl5[10]" [(value)]="selected5[10]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl5[11]" [(value)]="selected5[11]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep(teacherControl5,'panel5')">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep(teacherControl5,'panel5')">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel id="panel6" [expanded]="step === 5" (opened)="setStep(5,teacherControl6,'panel6')">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <span *ngIf="data">{{teachers[5]}}</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Click to give Feedback
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                
+                  <br>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl6[0]" [(value)]="selected6[0]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Utilization of Board" [formControl]="teacherControl6[1]" [(value)]="selected6[1]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Voice Modulation" [formControl]="teacherControl6[2]" [(value)]="selected6[2]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Control over the Class" [formControl]="teacherControl6[3]" [(value)]="selected6[3]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl6[4]" [(value)]="selected6[4]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl6[5]" [(value)]="selected6[5]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl6[6]" [(value)]="selected6[6]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Punctuality" [formControl]="teacherControl6[7]" [(value)]="selected6[7]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl6[8]" [(value)]="selected6[8]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl6[9]" [(value)]="selected6[9]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="Interaction with Students" [formControl]="teacherControl6[10]" [(value)]="selected6[10]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  
+                    <div class="col-sm-4">
+                      <div class="example-container">
+                        <mat-form-field>
+                          <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl6[11]" [(value)]="selected6[11]" required>
+                            <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
+                              {{ f.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error>Please choose an option</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep(teacherControl6,'panel6')">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep(teacherControl6,'panel6')">End</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
             <br>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl1[0]" [(value)]="selected1[0]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Utilization of Board" [formControl]="teacherControl1[1]" [(value)]="selected1[1]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Voice Modulation" [formControl]="teacherControl1[2]" [(value)]="selected1[2]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
+            <div align="center">
+              <button mat-raised-button color="primary" (click)="submit()">Submit</button>           
             </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Control over the Class" [formControl]="teacherControl1[3]" [(value)]="selected1[3]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl1[4]" [(value)]="selected1[4]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl1[5]" [(value)]="selected1[5]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl1[6]" [(value)]="selected1[6]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Punctuality" [formControl]="teacherControl1[7]" [(value)]="selected1[7]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl1[8]" [(value)]="selected1[8]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl1[9]" [(value)]="selected1[9]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Interaction with Students" [formControl]="teacherControl1[10]" [(value)]="selected1[10]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl1[11]" [(value)]="selected1[11]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <mat-action-row>
-              <button mat-button color="primary" (click)="nextStep(teacherControl1,'panel1')">Next</button>
-            </mat-action-row>
-          </mat-expansion-panel>
-
-          <mat-expansion-panel id="panel2" [expanded]="step === 1" (opened)="setStep(1,teacherControl2,'panel2')">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <span *ngIf="data">{{teachers[1]}}</span>
-              </mat-panel-title>
-              <mat-panel-description>
-                Click to give Feedback
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-
-            <br>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl2[0]" [(value)]="selected2[0]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Utilization of Board" [formControl]="teacherControl2[1]" [(value)]="selected2[1]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Voice Modulation" [formControl]="teacherControl2[2]" [(value)]="selected2[2]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Control over the Class" [formControl]="teacherControl2[3]" [(value)]="selected2[3]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl2[4]" [(value)]="selected2[4]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl2[5]" [(value)]="selected2[5]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl2[6]" [(value)]="selected2[6]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Punctuality" [formControl]="teacherControl2[7]" [(value)]="selected2[7]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl2[8]" [(value)]="selected2[8]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl2[9]" [(value)]="selected2[9]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Interaction with Students" [formControl]="teacherControl2[10]" [(value)]="selected2[10]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl2[11]" [(value)]="selected2[11]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep(teacherControl2,'panel2')">Previous</button>
-              <button mat-button color="primary" (click)="nextStep(teacherControl2,'panel2')">Next</button>
-            </mat-action-row>
-          </mat-expansion-panel>
-
-          <mat-expansion-panel id="panel3" [expanded]="step === 2" (opened)="setStep(2,teacherControl3,'panel3')">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <span *ngIf="data">{{teachers[2]}}</span>
-              </mat-panel-title>
-              <mat-panel-description>
-                Click to give Feedback
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-
-            <br>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl3[0]" [(value)]="selected3[0]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Utilization of Board" [formControl]="teacherControl3[1]" [(value)]="selected3[1]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Voice Modulation" [formControl]="teacherControl3[2]" [(value)]="selected3[2]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Control over the Class" [formControl]="teacherControl3[3]" [(value)]="selected3[3]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl3[4]" [(value)]="selected3[4]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl3[5]" [(value)]="selected3[5]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl3[6]" [(value)]="selected3[6]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Punctuality" [formControl]="teacherControl3[7]" [(value)]="selected3[7]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl3[8]" [(value)]="selected3[8]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl3[9]" [(value)]="selected3[9]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Interaction with Students" [formControl]="teacherControl3[10]" [(value)]="selected3[10]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl3[11]" [(value)]="selected3[11]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep(teacherControl3,'panel3')">Previous</button>
-              <button mat-button color="primary" (click)="nextStep(teacherControl3,'panel3')">Next</button>
-            </mat-action-row>
-          </mat-expansion-panel>
-
-          <mat-expansion-panel id="panel4" [expanded]="step === 3" (opened)="setStep(3,teacherControl4,'panel4')">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <span *ngIf="data">{{teachers[3]}}</span>
-              </mat-panel-title>
-              <mat-panel-description>
-                Click to give Feedback
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-
-            <br>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl4[0]" [(value)]="selected4[0]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Utilization of Board" [formControl]="teacherControl4[1]" [(value)]="selected4[1]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Voice Modulation" [formControl]="teacherControl4[2]" [(value)]="selected4[2]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Control over the Class" [formControl]="teacherControl4[3]" [(value)]="selected4[3]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl4[4]" [(value)]="selected4[4]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl4[5]" [(value)]="selected4[5]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl4[6]" [(value)]="selected4[6]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Punctuality" [formControl]="teacherControl4[7]" [(value)]="selected4[7]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl4[8]" [(value)]="selected4[8]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl4[9]" [(value)]="selected4[9]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Interaction with Students" [formControl]="teacherControl4[10]" [(value)]="selected4[10]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl4[11]" [(value)]="selected4[11]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep(teacherControl4,'panel4')">Previous</button>
-              <button mat-button color="primary" (click)="nextStep(teacherControl4,'panel4')">Next</button>
-            </mat-action-row>
-          </mat-expansion-panel>
-
-          <mat-expansion-panel id="panel5" [expanded]="step === 4" (opened)="setStep(4,teacherControl5,'panel5')">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <span *ngIf="data">{{teachers[4]}}</span>
-              </mat-panel-title>
-              <mat-panel-description>
-                Click to give Feedback
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-
-            <br>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl5[0]" [(value)]="selected5[0]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Utilization of Board" [formControl]="teacherControl5[1]" [(value)]="selected5[1]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Voice Modulation" [formControl]="teacherControl5[2]" [(value)]="selected5[2]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Control over the Class" [formControl]="teacherControl5[3]" [(value)]="selected5[3]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl5[4]" [(value)]="selected5[4]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl5[5]" [(value)]="selected5[5]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl5[6]" [(value)]="selected5[6]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Punctuality" [formControl]="teacherControl5[7]" [(value)]="selected5[7]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl5[8]" [(value)]="selected5[8]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl5[9]" [(value)]="selected5[9]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Interaction with Students" [formControl]="teacherControl5[10]" [(value)]="selected5[10]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl5[11]" [(value)]="selected5[11]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep(teacherControl5,'panel5')">Previous</button>
-              <button mat-button color="primary" (click)="nextStep(teacherControl5,'panel5')">Next</button>
-            </mat-action-row>
-          </mat-expansion-panel>
-
-          <mat-expansion-panel id="panel6" [expanded]="step === 5" (opened)="setStep(5,teacherControl6,'panel6')">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <span *ngIf="data">{{teachers[5]}}</span>
-              </mat-panel-title>
-              <mat-panel-description>
-                Click to give Feedback
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-
-            <br>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Faculty Teaching Method" [formControl]="teacherControl6[0]" [(value)]="selected6[0]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Utilization of Board" [formControl]="teacherControl6[1]" [(value)]="selected6[1]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Voice Modulation" [formControl]="teacherControl6[2]" [(value)]="selected6[2]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Control over the Class" [formControl]="teacherControl6[3]" [(value)]="selected6[3]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="In-depth Subject Understanding" [formControl]="teacherControl6[4]" [(value)]="selected6[4]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Coverage of Syllabus" [formControl]="teacherControl6[5]" [(value)]="selected6[5]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Internal Evaluation" [formControl]="teacherControl6[6]" [(value)]="selected6[6]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Punctuality" [formControl]="teacherControl6[7]" [(value)]="selected6[7]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Able to Answer Questions" [formControl]="teacherControl6[8]" [(value)]="selected6[8]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Use of new Teaching Techniques" [formControl]="teacherControl6[9]" [(value)]="selected6[9]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="Interaction with Students" [formControl]="teacherControl6[10]" [(value)]="selected6[10]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div class="example-container">
-                  <mat-form-field>
-                    <mat-select placeholder="How well does he/she render the subject?" [formControl]="teacherControl6[11]" [(value)]="selected6[11]" required>
-                      <mat-option *ngFor="let f of Feedbacks" [value]="f.value">
-                        {{ f.viewValue }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error>Please choose an option</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-
-            <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep(teacherControl6,'panel6')">Previous</button>
-              <button mat-button color="primary" (click)="nextStep(teacherControl6,'panel6')">End</button>
-            </mat-action-row>
-          </mat-expansion-panel>
-        </mat-accordion>
+          </mat-card-content>
+        </mat-card>
       </div>
-      <br>
-      <div align="center">
-        <button mat-raised-button color="primary" (click)="submit()">Submit</button>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </main>
 </div>

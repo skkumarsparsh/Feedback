@@ -1,0 +1,18 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row" style="padding: 0 40px 0 40px;">
+      <span class="mdl-layout-title">Teacher Feedback</span>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <mat-form-field>
+        <input matInput placeholder="Username" #username>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" #password>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="login(username.value, password.value)">LOGIN</button>
+    </div>
+  </main>
+</div>

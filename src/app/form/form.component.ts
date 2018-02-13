@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Form } from '../form.model';
 import { Http,Headers,RequestOptions,RequestMethod } from '@angular/http';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -19,14 +20,18 @@ export class FormComponent implements OnInit {
   previousPanel;
   teachers = new Array(6);
   selected;
+  returnData;
+  doneFeedback;
+
+  response = new Object();
 
   Feedbacks = [
-    {value: '0', viewValue: 'Excellent'},
-    {value: '1', viewValue: 'Very Good'},
-    {value: '2', viewValue: 'Good'},
-    {value: '3', viewValue: 'Satisfactory'},
-    {value: '4', viewValue: 'Bad'},
-    {value: '5', viewValue: 'Very Bad'},
+    {value: 0, viewValue: 'Excellent'},
+    {value: 1, viewValue: 'Very Good'},
+    {value: 2, viewValue: 'Good'},
+    {value: 3, viewValue: 'Satisfactory'},
+    {value: 4, viewValue: 'Bad'},
+    {value: 5, viewValue: 'Very Bad'},
   ]
 
   teacherControl1 = new Array(12);
@@ -43,7 +48,7 @@ export class FormComponent implements OnInit {
   selected6 = new Array(12);
   validPanels = new Array(6);
 
-  constructor(private http:Http, public dialog: MatDialog) {
+  constructor(private http:Http, public dialog: MatDialog,public authService: AuthService, private route: Router) {
     for(var i=0;i<12;i++) {
       this.teacherControl1[i] = new FormControl('', [Validators.required]);
       this.teacherControl2[i] = new FormControl('', [Validators.required]);
@@ -62,6 +67,7 @@ export class FormComponent implements OnInit {
       this.validPanels[i] = 0;
     }
     this.initial=0;
+    this.doneFeedback = false;
   }
 
   ngOnInit() {
@@ -71,9 +77,16 @@ export class FormComponent implements OnInit {
   getData() {
     this.http.get('http://127.0.0.1:8080/test').subscribe(res => {
       this.data = res.json() || {};
+      console.log(this.data);
       this.teachers = this.data["Semester 6"]["Class D"];
     })
   }
+
+  logout() {
+    this.authService.logout();
+    this.route.navigate(['/']);
+  }
+
 
   submit() {
     var j;
@@ -92,17 +105,25 @@ export class FormComponent implements OnInit {
     if(j==1) {
       this.openDialog(false);
     } else {
-      /**TODO - Send the data here!! */
+
+      this.response[this.data["Semester 6"]["Class D"][0]] = this.selected1;
+      this.response[this.data["Semester 6"]["Class D"][1]] = this.selected2;
+      this.response[this.data["Semester 6"]["Class D"][2]] = this.selected3;
+      this.response[this.data["Semester 6"]["Class D"][3]] = this.selected4;
+      this.response[this.data["Semester 6"]["Class D"][4]] = this.selected5;
+      this.response[this.data["Semester 6"]["Class D"][5]] = this.selected6;
+      console.log("Data being sent to the server - ")
+      console.log(this.response);
 
 
-      // let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
-      // let options = new RequestOptions({ headers: headers });
-      // this.http.post('http://127.0.0.1:8080', this.model, options).subscribe(res => {
-      //   this.data = res.json() || {};
-      //   console.log(this.data);
-      // });
-
-
+      let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+      let options = new RequestOptions({ headers: headers });
+      this.http.post('http://127.0.0.1:8080', this.response, options).subscribe(res => {
+        this.returnData = res.json() || {};
+        console.log("Data received from the server - ")
+        console.log(this.returnData);
+      });
+      this.doneFeedback = true;
       this.openDialog(true);
     }
   }
@@ -111,6 +132,14 @@ export class FormComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '360px',
       data: { value: d }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(this.doneFeedback) {
+        this.authService.logout();
+        this.route.navigate(['/']);
+      }
     });
   }
 
