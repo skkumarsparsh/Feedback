@@ -3,9 +3,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthService {
 
-  login(user: string, password: string): boolean {
-    if (user === 'user' && password === 'password') {
-      localStorage.setItem('USN', user);
+  login(usn: string,semester: string,section: string): boolean {
+    if (usn.length === 10) {
+      localStorage.setItem('USN', usn);
+      localStorage.setItem('Semester', semester);
+      localStorage.setItem('Section', section);
       return true;
     }
     return false;
@@ -13,6 +15,8 @@ export class AuthService {
 
   logout(): any {
     localStorage.removeItem('USN');
+    localStorage.removeItem('Semester');
+    localStorage.removeItem('Section');
   }
 
   getUser(): any {

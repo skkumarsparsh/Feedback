@@ -15,8 +15,4 @@ export class DialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }

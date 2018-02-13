@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Http,Headers,RequestOptions,RequestMethod } from '@angular/http';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
@@ -22,6 +22,8 @@ export class FormComponent implements OnInit {
   selected;
   returnData;
   doneFeedback;
+  semester;
+  section;
 
   response = new Object();
 
@@ -68,6 +70,8 @@ export class FormComponent implements OnInit {
     }
     this.initial=0;
     this.doneFeedback = false;
+    this.semester = localStorage.getItem('Semester');
+    this.section = localStorage.getItem('Section');
   }
 
   ngOnInit() {

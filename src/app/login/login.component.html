@@ -4,15 +4,36 @@
       <span class="mdl-layout-title">Teacher Feedback</span>
     </div>
   </header>
-  <main class="mdl-layout__content">
-    <div class="page-content">
-      <mat-form-field>
-        <input matInput placeholder="Username" #username>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" #password>
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="login(username.value, password.value)">LOGIN</button>
+  <main class="mdl-layout__content" style="background:url(http://wallpaper-house.com/data/out/12/wallpaper2you_492194.jpg)">
+    <div class="page-content" align="center" style="margin-top:12%;">
+      <div style="padding:20px;">
+        <mat-card style="padding:20px;width:24%;padding-top:25px;">
+          <mat-form-field>
+            <input matInput placeholder="Username" #username required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-select placeholder="Semester" [formControl]="semesterControl" [(value)]="semesterSelection" required>
+              <mat-option *ngFor="let s of Semester" [value]="s.value">
+                {{ s.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-error>Please choose an option</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Section" [formControl]="sectionControl" [(value)]="sectionSelection" required>
+              <mat-option *ngFor="let se of Section" [value]="se.value">
+                {{ se.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-error>Please choose an option</mat-error>
+          </mat-form-field>
+          <br>
+          <div align="center" style="padding-top:10px">
+            <button mat-raised-button color="primary" (click)="login(username.value)">LOGIN</button>
+          </div>
+        </mat-card>
+      </div>
     </div>
   </main>
 </div>

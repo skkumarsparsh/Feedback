@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { LoginComponent } from './login/login.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
     AppComponent,
     FormComponent,
     DialogComponent,
-    LoginComponent
+    LoginComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,10 @@ const routes: Routes = [
     MatSelectModule,
     MatDialogModule
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [
+    DialogComponent,
+    LoginDialogComponent
+  ],
   providers: [
     AUTH_PROVIDERS,
     LoggedInGuard
