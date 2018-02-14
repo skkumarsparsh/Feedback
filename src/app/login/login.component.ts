@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { Http,Headers,RequestOptions,RequestMethod } from '@angular/http';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  message: string;
+  data;
 
   semesterControl = new FormControl('', [Validators.required]);
   sectionControl = new FormControl('', [Validators.required]);
@@ -35,8 +36,7 @@ export class LoginComponent implements OnInit {
     {value: 'D', viewValue: 'D'}
   ]
 
-  constructor(public authService: AuthService, private route: Router, public dialog: MatDialog) {
-    this.message = '';
+  constructor(public authService: AuthService, private route: Router, public dialog: MatDialog, public http:Http) {
     if(authService.getUser()) {
       this.route.navigate(['/form']);
     }
@@ -45,25 +45,33 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(): void {
+  openDialog(d = true): void {
     let dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '330px',
-      data: { }
+      data: { d }
     });
   }
 
-  login(username: string) {
-    this.message = '';
+  login(usn: string) {
     if(this.semesterSelection != '0' && this.sectionSelection != '') {
-        if(!this.authService.login(username,this.semesterSelection,this.sectionSelection)) {
-          this.openDialog();
+      let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+      let options = new RequestOptions({ headers: headers });
+      this.http.post('http://127.0.0.1:8080/check', {'usn': usn}, options).subscribe(res => {
+        this.data = res.json() || {};
+        if(this.data.allowed) {
+          if(!this.authService.login(usn,this.semesterSelection,this.sectionSelection)) {
+            this.openDialog();
+          } else {
+            this.route.navigate(['/form']);
+          }
         } else {
-          this.route.navigate(['/form']);
+          this.openDialog(false);
         }
-      }
-      else {
-        this.openDialog();
-      }
+      });
+    }
+    else {
+      this.openDialog();
+    }
     return false;
   }
 }

@@ -1,9 +1,22 @@
-<h1 mat-dialog-title align="center">Invalid Inputs</h1>
-<div mat-dialog-content align="center">
-  <p>
-    Please check your input and try again.
-  </p>
+<div *ngIf="data.d">
+  <h1 mat-dialog-title align="center">Invalid Inputs</h1>
+  <div mat-dialog-content align="center">
+    <p>
+      Please check your input and try again.
+    </p>
+  </div>
+  <div mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" [mat-dialog-close]="">OK</button>
+  </div>
 </div>
-<div mat-dialog-actions align="center">
-  <button mat-raised-button color="primary" [mat-dialog-close]="">OK</button>
+<div *ngIf="!data.d">
+  <h1 mat-dialog-title align="center">Feedback Already Given</h1>
+  <div mat-dialog-content align="center">
+    <p>
+      This USN has already given feedback.
+    </p>
+  </div>
+  <div mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" [mat-dialog-close]="">OK</button>
+  </div>
 </div>

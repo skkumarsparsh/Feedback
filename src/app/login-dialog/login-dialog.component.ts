@@ -10,6 +10,7 @@ export class LoginDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
+      console.log(data.d)
      }
 
   ngOnInit() {

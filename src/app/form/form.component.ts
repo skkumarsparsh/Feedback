@@ -79,11 +79,19 @@ export class FormComponent implements OnInit {
   }
 
   getData() {
-    this.http.get('http://127.0.0.1:8080/test').subscribe(res => {
+    // this.http.get('http://127.0.0.1:8080').subscribe(res => {
+    //   this.data = res.json() || {};
+    //   console.log(this.data);
+    //   this.teachers = this.data["Semester 6"]["Class D"];
+    // })
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+    let options = new RequestOptions({ headers: headers });
+    this.http.post('http://127.0.0.1:8080/teachers', {}, options).subscribe(res => {
       this.data = res.json() || {};
+      console.log("Data received from the server - ")
       console.log(this.data);
       this.teachers = this.data["Semester 6"]["Class D"];
-    })
+    });
   }
 
   logout() {
@@ -120,13 +128,13 @@ export class FormComponent implements OnInit {
       console.log(this.response);
 
 
-      let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
-      let options = new RequestOptions({ headers: headers });
-      this.http.post('http://127.0.0.1:8080', this.response, options).subscribe(res => {
-        this.returnData = res.json() || {};
-        console.log("Data received from the server - ")
-        console.log(this.returnData);
-      });
+      // let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+      // let options = new RequestOptions({ headers: headers });
+      // this.http.post('http://127.0.0.1:8080', this.response, options).subscribe(res => {
+      //   this.returnData = res.json() || {};
+      //   console.log("Data received from the server - ")
+      //   console.log(this.returnData);
+      // });
       this.doneFeedback = true;
       this.openDialog(true);
     }
