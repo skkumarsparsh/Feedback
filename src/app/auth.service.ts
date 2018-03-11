@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   login(usn: string,semester: string,section: string): boolean {
-    if (usn.length === 10) {
+    var alphaexp = /^[1-4][a-zA-Z][a-zA-Z][0-9][0-9][a-zA-Z][a-zA-Z][0-9][0-9][0-9]$/;
+    if (usn.match(alphaexp)) {
       localStorage.setItem('USN', usn);
       localStorage.setItem('Semester', semester);
       localStorage.setItem('Section', section);
