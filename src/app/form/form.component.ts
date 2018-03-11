@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
   previousPanelControl;
   previousPanel;
   teachers = new Array(6);
+  subjects = new Array(6);
   selected;
   returnData;
   doneFeedback;
@@ -79,7 +80,7 @@ export class FormComponent implements OnInit {
   }
 
   getData() {
-    // this.http.get('http://127.0.0.1:8080').subscribe(res => {
+    // this.http.get('http://127.0.0.1:8080/').subscribe(res => {
     //   this.data = res.json() || {};
     //   console.log(this.data);
     //   this.teachers = this.data["Semester 6"]["Class D"];
@@ -90,7 +91,14 @@ export class FormComponent implements OnInit {
       this.data = res.json() || {};
       console.log("Data received from the server - ")
       console.log(this.data);
-      this.teachers = this.data["Semester 6"]["Class D"];
+      var temp = this.data["Semester 6"]["Class D"];
+      var i=0;
+      for(var t in temp) {
+        this.teachers[i] = t;
+        this.subjects[i] = temp[t];
+        // console.log(temp[t])
+        i = i+1;
+      }
     });
   }
 
@@ -115,26 +123,51 @@ export class FormComponent implements OnInit {
       }
     }
     if(j==1) {
-      this.openDialog(false);
-    } else {
 
-      this.response[this.data["Semester 6"]["Class D"][0]] = this.selected1;
-      this.response[this.data["Semester 6"]["Class D"][1]] = this.selected2;
-      this.response[this.data["Semester 6"]["Class D"][2]] = this.selected3;
-      this.response[this.data["Semester 6"]["Class D"][3]] = this.selected4;
-      this.response[this.data["Semester 6"]["Class D"][4]] = this.selected5;
-      this.response[this.data["Semester 6"]["Class D"][5]] = this.selected6;
-      console.log("Data being sent to the server - ")
-      console.log(this.response);
+      // ---------------- Sending Response to the server (for testing purposes) --------------------
+      // this.response[this.teachers[0]] = this.selected1;
+      // this.response[this.teachers[1]] = this.selected2;
+      // this.response[this.teachers[2]] = this.selected3;
+      // this.response[this.teachers[3]] = this.selected4;
+      // this.response[this.teachers[4]] = this.selected5;
+      // this.response[this.teachers[5]] = this.selected6;
+      // this.response["subjects"] = this.subjects;
+      // this.response["usn"] = (localStorage.getItem("USN")).toString();
+      // console.log("Data being sent to the server - ");
+      // console.log(this.response);
 
 
       // let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
       // let options = new RequestOptions({ headers: headers });
-      // this.http.post('http://127.0.0.1:8080', this.response, options).subscribe(res => {
+      // this.http.post('http://0.0.0.0:8080/response', this.response, options).subscribe(res => {
       //   this.returnData = res.json() || {};
       //   console.log("Data received from the server - ")
       //   console.log(this.returnData);
       // });
+      // -------------------------------------------------------------------------------------------
+
+      this.openDialog(false);
+    } else {
+
+      this.response[this.teachers[0]] = this.selected1;
+      this.response[this.teachers[1]] = this.selected2;
+      this.response[this.teachers[2]] = this.selected3;
+      this.response[this.teachers[3]] = this.selected4;
+      this.response[this.teachers[4]] = this.selected5;
+      this.response[this.teachers[5]] = this.selected6;
+      this.response["subjects"] = this.subjects;
+      this.response["usn"] = localStorage.getItem("USN");
+      console.log("Data being sent to the server - ");
+      console.log(this.response);
+
+
+      let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+      let options = new RequestOptions({ headers: headers });
+      this.http.post('http://0.0.0.0:8080/response', this.response, options).subscribe(res => {
+        this.returnData = res.json() || {};
+        console.log("Data received from the server - ")
+        console.log(this.returnData);
+      });
       this.doneFeedback = true;
       this.openDialog(true);
     }
