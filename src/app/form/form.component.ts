@@ -25,6 +25,7 @@ export class FormComponent implements OnInit {
   doneFeedback;
   semester;
   section;
+  usn;
 
   response = new Object();
 
@@ -73,6 +74,7 @@ export class FormComponent implements OnInit {
     this.doneFeedback = false;
     this.semester = localStorage.getItem('Semester');
     this.section = localStorage.getItem('Section');
+    this.usn = localStorage.getItem('USN');
   }
 
   ngOnInit() {
@@ -86,7 +88,7 @@ export class FormComponent implements OnInit {
       this.data = res.json() || {};
       // console.log("Data received from the server - ")
       // console.log(this.data);
-      var temp = this.data["Semester 6"]["Class D"];
+      var temp = this.data["Semester " + this.semester]["Class " + this.section];
       var i=0;
       for(var t in temp) {
         this.teachers[i] = t;
