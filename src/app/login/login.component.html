@@ -9,7 +9,10 @@
       <div style="padding:20px;">
         <mat-card style="padding:20px;width:24%;padding-top:25px;border-radius:15px;">
           <mat-form-field>
-            <input matInput placeholder="USN" #usn required>
+            <input matInput placeholder="USN" #usn [formControl]="usnControl" required>
+            <mat-error>
+              USN is <strong>required</strong>
+            </mat-error>
           </mat-form-field>
           <br>
           <mat-form-field>

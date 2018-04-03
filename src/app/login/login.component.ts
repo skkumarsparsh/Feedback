@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   semesterControl = new FormControl('', [Validators.required]);
   sectionControl = new FormControl('', [Validators.required]);
+  usnControl = new FormControl('', [Validators.required]);
 
   semesterSelection = '0';
   sectionSelection = "";
