@@ -129,6 +129,8 @@ export class FormComponent implements OnInit {
       this.response[this.teachers[4]] = this.selected5;
       this.response[this.teachers[5]] = this.selected6;
       this.response["subjects"] = this.subjects;
+      this.response["semester"] = this.semester;
+      this.response["section"] = this.section;
       this.response["usn"] = localStorage.getItem("USN");
       // console.log("Data being sent to the server - ");
       // console.log(this.response);
