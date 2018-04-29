@@ -30,12 +30,12 @@ export class FormComponent implements OnInit {
   response = new Object();
 
   Feedbacks = [
-    {value: 0, viewValue: 'Excellent'},
-    {value: 1, viewValue: 'Very Good'},
-    {value: 2, viewValue: 'Good'},
-    {value: 3, viewValue: 'Satisfactory'},
-    {value: 4, viewValue: 'Bad'},
-    {value: 5, viewValue: 'Very Bad'},
+    {value: 5, viewValue: 'Excellent'},
+    {value: 4, viewValue: 'Very Good'},
+    {value: 3, viewValue: 'Good'},
+    {value: 2, viewValue: 'Satisfactory'},
+    {value: 1, viewValue: 'Bad'},
+    {value: 0, viewValue: 'Very Bad'},
   ]
 
   teacherControl1 = new Array(12);
@@ -84,7 +84,7 @@ export class FormComponent implements OnInit {
   getData() {
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({ headers: headers });
-    this.http.post('http://127.0.0.1:8080/teachers', {}, options).subscribe(res => {
+    this.http.post('http://0.0.0.0:8080/teachers', {}, options).subscribe(res => {
       this.data = res.json() || {};
       // console.log("Data received from the server - ")
       // console.log(this.data);

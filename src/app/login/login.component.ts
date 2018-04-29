@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     if(this.semesterSelection != '0' && this.sectionSelection != '') {
       let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
       let options = new RequestOptions({ headers: headers });
-      this.http.post('http://127.0.0.1:8080/check', {'usn': usn}, options).subscribe(res => {
+      this.http.post('http://0.0.0.0:8080/check', {'usn': usn}, options).subscribe(res => {
         this.data = res.json() || {};
         if(this.data.allowed) {
           if(!this.authService.login(usn,this.semesterSelection,this.sectionSelection)) {
